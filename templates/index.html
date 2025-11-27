@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Chatbot Analyser</title>
+    <meta name="description" content="AI-powered chatbot with real-time sentiment analysis">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar" role="complementary">
+            <div class="sidebar-header">
+                <h2>YOUR CHATS</h2>
+                <button id="new-chat-btn" class="icon-btn" title="New Chat" aria-label="Start new chat">+</button>
+            </div>
+            <nav id="history-list" class="history-list" aria-label="Chat history">
+            </nav>
+        </aside>
+
+        <main class="main-content" role="main">
+            <header>
+                <h1>Sentiment Chatbot Analyser</h1>
+                <div class="header-controls">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="toggle-track">
+                            <span class="toggle-thumb"></span>
+                            <span class="toggle-icon sun">☀️</span>
+                            <span class="toggle-icon moon">🌙</span>
+                        </span>
+                    </button>
+                </div>
+            </header>
+
+            <div id="chat-window" class="chat-window" role="log" aria-live="polite" aria-label="Chat messages">
+                <div class="message bot-message">
+                    <div class="message-content">👋 Hello! I'm ready to chat. I'll analyze our conversation sentiment
+                        when you're done.</div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off"
+                    aria-label="Message input">
+                <button id="send-btn" aria-label="Send message">Send</button>
+            </div>
+
+            <div class="controls">
+                <button id="end-btn" class="primary-btn" aria-label="End conversation and analyze sentiment">
+                    End Conversation &amp; Analyze Sentiment
+                </button>
+            </div>
+
+            <div id="sentiment-result" class="sentiment-result hidden" role="region"
+                aria-label="Sentiment analysis results">
+                <h2>📊 Conversation Analysis</h2>
+                <div class="result-card">
+                    <div class="sentiment-label" id="sentiment-label">--</div>
+                    <div class="sentiment-score">Score: <span id="sentiment-score">--</span></div>
+                    <div class="sentiment-summary" id="sentiment-summary"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
